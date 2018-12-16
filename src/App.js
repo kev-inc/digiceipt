@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Welcome from './components/Welcome'
 import Scanner from './components/Scanner'
 import ViewReceipt from './components/ViewReceipt'
+import ConfirmReceipt from './components/ConfirmReceipt'
 import './App.css';
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path='/home' component={Home} />
             <Route path='/scan' component={Scanner} />
             <Route path='/view/:receiptId' component={ViewReceipt} />
+            <Route path='/confirm/:receiptId' component={ConfirmReceipt} />
           </Switch>
 
         </div>

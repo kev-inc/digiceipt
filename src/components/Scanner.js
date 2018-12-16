@@ -1,5 +1,6 @@
 import React from 'react'
-import ReceiptModal from './ReceiptModal'
+import QrReader from 'react-qr-reader'
+import {Link} from 'react-router-dom'
 
 class Scanner extends React.Component {
 
@@ -7,26 +8,35 @@ class Scanner extends React.Component {
         super(props)
 
         this.state = {
-            showModal: false,
-            receiptSelected: 0
+            delay: 300,
+            result: "No result"
+        }
+        this.handleScan = this.handleScan.bind(this)
+        this.handleError = this.handleError.bind(this)
+    }
+
+    handleScan(data) {
+        if (data) {
+            this.setState({result: data})
         }
     }
-
-    openModal (receiptId) {
-        console.log(this.state.showModal)
-        this.setState({showModal: true, receiptSelected: receiptId})
+    handleError(err) {
+        console.log(err)
     }
 
-    closeModal = () => {
-        this.setState({showModal:false})
-    }
     render() {
         return(
-            <div className="Scanner">
-                <div className="h3">Scanner page</div> 
-                <button className="btn btn-primary" onClick={() => this.openModal(0)}>gongcha</button>
-                <button className="btn btn-warning" onClick={() => this.openModal(1)}>harry's</button>
-                <ReceiptModal receiptSelected={this.state.receiptSelected} closeModal={this.closeModal} showModal={this.state.showModal} openModal={this.openModal}/>
+            <div className="Scanner p-4">
+                <h3 className="font-weight-light">Scan new receipt</h3>
+                <QrReader
+                    delay={this.state.delay}
+                    onError={this.handleError}
+                    onScan={this.handleScan}
+                    style={{width: '100%'}}
+                />
+                <p>For testing only:</p>
+                <Link to='/confirm/0' className='btn btn-primary'>gongcha</Link>
+                <Link to='/confirm/1' className='btn btn-primary'>harry's</Link>
             </div>
         )
     }

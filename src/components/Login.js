@@ -11,6 +11,7 @@ const Login = (props) => (
             <input type="password" className="form-control" placeholder="Password" />
         </div>
         <Link className="btn btn-success btn-lg" to='/home'>Log in</Link>
+        <p>Just click on log in don't need to enter anything</p>
     </div>
 )
 

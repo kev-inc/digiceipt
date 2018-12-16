@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { receipts } from '../mockdata/receipts'
 
 const History = (props) => (
-     <div className="History">
+     <div className="History p-4">
+        <h3 className="font-weight-light">Past receipts</h3>
         {receipts.map((item, index) => {
             return <div className="receipts" key={index}>
                 <div className='shadow-sm p-3 m-2 text-left'>

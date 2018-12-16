@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Welcome = (props) => (
-    <div className="Welcome">
+    <div className="Welcome p-4">
         <div className="welcome m-2">
             <h3>Welcome to Digiceipt!</h3>
             <h4 className="font-weight-light text-muted">Your one stop for all your receipts!</h4>
