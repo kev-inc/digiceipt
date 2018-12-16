@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/digiceipt/precache-manifest.ba88537532770b7b101c77e638d815e5.js"
+  "/digiceipt/precache-manifest.951f6b4352587b0b3535252d8687bb9d.js"
 );
 
 workbox.clientsClaim();
