@@ -11,13 +11,40 @@ class Ocr extends React.Component {
             ocrState:"",
             percentCompleted: 0,
             result: "",
-            url: ""
+            url: "",
         }
-        // this.onInputChange = this.onInputChange.bind(this)
     }
 
     componentDidMount () {
         
+    }
+
+    setRef = webcam => {
+        this.webcam = webcam
+    }
+
+    capture = () => {
+        const imageSrc = this.webcam.getScreenshot()
+        this.scanPicture(imageSrc)
+    }
+
+    scanPicture(picture) {
+        let tesseract = window.Tesseract
+        console.log(tesseract)
+        tesseract.recognize("picture", {
+            lang: 'eng'
+        })
+            .progress(message => {
+                this.setState({ocrState: message.status})
+                if(message.status === "recognizing text") {
+                    this.setState({percentCompleted: message.progress})
+                }
+                console.log("% completed: ", message)
+            })
+            .then(result => {
+                console.log(result)
+                this.setState({result: result.text})
+            })
     }
 
     onScan = () => {
@@ -44,9 +71,17 @@ class Ocr extends React.Component {
     }
 
     render() {
+        const videoConstraints = {
+            facingMode: {exact: "environment"}
+        }
         return(
             <div className='Ocr p-4'>
-                <Webcam></Webcam>
+                <Webcam 
+                    audio={false} 
+                    ref={this.setRef} 
+                    screenshotFormat="image/jpeg"
+                    ></Webcam>
+                <button className="btn btn-success" onClick={this.capture}>Capture</button>
                 <div className="url">
                     <div className="input-group mb-3">
                         <input type="text" placeholder="url" className="form-control" value={this.state.url} onChange={this.onInputChange}/>
