@@ -35,8 +35,9 @@ class Scanner extends React.Component {
                     style={{width: '100%'}}
                 />
                 <p>For testing only:</p>
-                <Link to='/confirm/0' className='btn btn-primary'>gongcha</Link>
-                <Link to='/confirm/1' className='btn btn-primary'>harry's</Link>
+                <Link to='/confirm/0' className='btn btn-primary btn-block'>gongcha</Link>
+                <Link to='/confirm/1' className='btn btn-primary btn-block'>harry's</Link>
+                <Link to='/ocr' className='btn btn-danger btn-block'>Manual Scan</Link>
             </div>
         )
     }
