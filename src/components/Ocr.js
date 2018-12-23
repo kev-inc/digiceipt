@@ -1,7 +1,6 @@
 import React from 'react'
 import Webcam from 'react-webcam'
-// import tesseract from 'node-tesseract-ocr'
-// import receipt from '../mockdata/r.jpg'
+import OcrResult from './OcrResult';
 
 class Ocr extends React.Component {
 
@@ -11,12 +10,8 @@ class Ocr extends React.Component {
             ocrState:"",
             percentCompleted: 0,
             result: "",
-            url: "",
+            state: 0
         }
-    }
-
-    componentDidMount () {
-        
     }
 
     setRef = webcam => {
@@ -25,17 +20,19 @@ class Ocr extends React.Component {
 
     capture = () => {
         const imageSrc = this.webcam.getScreenshot()
+        var image = new Image()
+        image.src = imageSrc
         this.scanPicture(imageSrc)
     }
 
     scanPicture(picture) {
         let tesseract = window.Tesseract
         console.log(tesseract)
-        tesseract.recognize("picture", {
+        tesseract.recognize(picture, {
             lang: 'eng'
         })
             .progress(message => {
-                this.setState({ocrState: message.status})
+                this.setState({ocrState: message.status, state: 1})
                 if(message.status === "recognizing text") {
                     this.setState({percentCompleted: message.progress})
                 }
@@ -46,28 +43,12 @@ class Ocr extends React.Component {
                 this.setState({result: result.text})
             })
     }
-
-    onScan = () => {
-        let tesseract = window.Tesseract
-        console.log(tesseract)
-        tesseract.recognize("https://cors-anywhere.herokuapp.com/" + this.state.url, {
-            lang: 'eng'
-        })
-            .progress(message => {
-                this.setState({ocrState: message.status})
-                if(message.status === "recognizing text") {
-                    this.setState({percentCompleted: message.progress})
-                }
-                console.log("% completed: ", message)
-            })
-            .then(result => {
-                console.log(result)
-                this.setState({result: result.text})
-            })
-    }
-
-    onInputChange = event => {
-        this.setState({url: event.target.value})
+    scanAgain = () => {
+        this.setState({
+            ocrState:"",
+            progressCompleted: 0,
+            result: "",
+            state: 0})
     }
 
     render() {
@@ -76,31 +57,27 @@ class Ocr extends React.Component {
         }
         return(
             <div className='Ocr p-4'>
-                <Webcam 
-                    audio={false} 
-                    ref={this.setRef} 
-                    screenshotFormat="image/jpeg"
-                    ></Webcam>
-                <button className="btn btn-success" onClick={this.capture}>Capture</button>
-                <div className="url">
-                    <div className="input-group mb-3">
-                        <input type="text" placeholder="url" className="form-control" value={this.state.url} onChange={this.onInputChange}/>
-                        <div className="input-group-append">
-                            <button className="btn btn-secondary" onClick={this.onScan}>Scan</button>
-                        </div>
+                {this.state.state === 0 ? 
+                    <div className="camera">
+                        <Webcam 
+                            audio={false} 
+                            width='100%'
+                            ref={this.setRef} 
+                            videoConstraints={videoConstraints}
+                            screenshotFormat="image/jpeg"
+                            ></Webcam>
+                        <button className="btn btn-success btn-block" onClick={this.capture}>Capture</button>
+                        
                     </div>
-                </div>
-                <div className="status">
-                    <span>{this.state.ocrState.toLocaleUpperCase()}</span>
-                </div>
-                <div className="progress">
-                    <div className="progress-bar" style={{width: `${this.state.percentCompleted*100}%`}}></div>
-                </div>
-                <div className="result">
-                    <pre>
-                        {this.state.result}
-                    </pre>
-                </div>
+                    :
+                    <OcrResult ocrState={this.state.ocrState}
+                        percentCompleted={this.state.percentCompleted}
+                        result={this.state.result}
+                        scanAgain = {this.scanAgain}/>
+                }
+                
+                
+                
 
             </div>
         )

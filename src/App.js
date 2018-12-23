@@ -9,6 +9,7 @@ import Scanner from './components/Scanner'
 import ViewReceipt from './components/ViewReceipt'
 import ConfirmReceipt from './components/ConfirmReceipt'
 import Ocr from './components/Ocr'
+import OcrResult from './components/OcrResult'
 import './App.css';
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path='/view/:receiptId' component={ViewReceipt} />
             <Route path='/confirm/:receiptId' component={ConfirmReceipt} />
             <Route path='/ocr' component={Ocr}/>
+            <Route path='/ocrresult' component={OcrResult}/>
           </Switch>
 
         </div>
