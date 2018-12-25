@@ -2,6 +2,7 @@ import React from 'react'
 
 const OcrResult = props => (
     <div className="OcrResult">
+        <img src={props.picture} alt=""/>
         <div className="status">
             <span>{props.ocrState.toLocaleUpperCase()}</span>
         </div>
