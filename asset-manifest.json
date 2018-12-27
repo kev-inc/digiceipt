@@ -1,7 +1,7 @@
 {
   "main.css": "/digiceipt/static/css/main.e175a774.chunk.css",
-  "main.js": "/digiceipt/static/js/main.549b7c3b.chunk.js",
-  "main.js.map": "/digiceipt/static/js/main.549b7c3b.chunk.js.map",
+  "main.js": "/digiceipt/static/js/main.4ac5f695.chunk.js",
+  "main.js.map": "/digiceipt/static/js/main.4ac5f695.chunk.js.map",
   "static/css/1.c93854ac.chunk.css": "/digiceipt/static/css/1.c93854ac.chunk.css",
   "static/js/1.2a4a657d.chunk.js": "/digiceipt/static/js/1.2a4a657d.chunk.js",
   "static/js/1.2a4a657d.chunk.js.map": "/digiceipt/static/js/1.2a4a657d.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/1.c93854ac.chunk.css.map": "/digiceipt/static/css/1.c93854ac.chunk.css.map",
   "static/css/main.e175a774.chunk.css.map": "/digiceipt/static/css/main.e175a774.chunk.css.map",
   "index.html": "/digiceipt/index.html",
-  "precache-manifest.e9e5e33f3a3c1535c57140ba5381e327.js": "/digiceipt/precache-manifest.e9e5e33f3a3c1535c57140ba5381e327.js",
+  "precache-manifest.e5f40bdbe03abd1d9c1e7a4862de6942.js": "/digiceipt/precache-manifest.e5f40bdbe03abd1d9c1e7a4862de6942.js",
   "service-worker.js": "/digiceipt/service-worker.js"
 }
