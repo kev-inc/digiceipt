@@ -4,23 +4,23 @@ self.__precacheManifest = [
     "url": "/digiceipt/static/js/runtime~main.fba7986e.js"
   },
   {
-    "revision": "4ac5f695a21ecf8aeafb",
-    "url": "/digiceipt/static/js/main.4ac5f695.chunk.js"
+    "revision": "c1ca9145fc757ddc91eb",
+    "url": "/digiceipt/static/js/main.c1ca9145.chunk.js"
   },
   {
-    "revision": "2a4a657de99ae19f01ea",
-    "url": "/digiceipt/static/js/1.2a4a657d.chunk.js"
+    "revision": "dab261157bdbf57de122",
+    "url": "/digiceipt/static/js/1.dab26115.chunk.js"
   },
   {
-    "revision": "4ac5f695a21ecf8aeafb",
+    "revision": "c1ca9145fc757ddc91eb",
     "url": "/digiceipt/static/css/main.e175a774.chunk.css"
   },
   {
-    "revision": "2a4a657de99ae19f01ea",
+    "revision": "dab261157bdbf57de122",
     "url": "/digiceipt/static/css/1.c93854ac.chunk.css"
   },
   {
-    "revision": "e1ecb8926eb47eee853aed709437f531",
+    "revision": "8ee975272f9ee8ab5f266be134d7499f",
     "url": "/digiceipt/index.html"
   }
 ];
